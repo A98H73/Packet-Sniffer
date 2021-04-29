@@ -68,8 +68,34 @@ class Pcap:
 
 def main():
 
+    
+    print('    SSSSSSSSSSSSSSS                   iiii     ffffffffffffffff    ffffffffffffffff')                                     
+    print(' SS:::::::::::::::S                 i::::i   f::::::::::::::::f  f::::::::::::::::f')                                     
+    print('S:::::SSSSSS::::::S                  iiii   f::::::::::::::::::ff::::::::::::::::::f ')                                   
+    print('S:::::S     SSSSSSS                         f::::::fffffff:::::ff::::::fffffff:::::f')                                    
+    print('S:::::S          nnnn  nnnnnnnn    iiiiiii  f:::::f       fffffff:::::f       ffffffeeeeeeeeeeee    rrrrr   rrrrrrrrr ')  
+    print('S:::::S          n:::nn::::::::nn  i:::::i  f:::::f             f:::::f           ee::::::::::::ee  r::::rrr:::::::::r')  
+    print(' S::::SSSS       n::::::::::::::nn  i::::i f:::::::ffffff      f:::::::ffffff    e::::::eeeee:::::eer:::::::::::::::::r') 
+    print('  SS::::::SSSSS  nn:::::::::::::::n i::::i f::::::::::::f      f::::::::::::f   e::::::e     e:::::err::::::rrrrr::::::r')
+    print('    SSS::::::::SS  n:::::nnnn:::::n i::::i f::::::::::::f      f::::::::::::f   e:::::::eeeee::::::e r:::::r     r:::::r')
+    print('       SSSSSS::::S n::::n    n::::n i::::i f:::::::ffffff      f:::::::ffffff   e:::::::::::::::::e  r:::::r     rrrrrrr')
+    print('            S:::::Sn::::n    n::::n i::::i  f:::::f             f:::::f         e::::::eeeeeeeeeee   r:::::r')            
+    print('            S:::::Sn::::n    n::::n i::::i  f:::::f             f:::::f         e:::::::e            r:::::r')            
+    print('SSSSSSS     S:::::Sn::::n    n::::ni::::::if:::::::f           f:::::::f        e::::::::e           r:::::r')            
+    print('S::::::SSSSSS:::::Sn::::n    n::::ni::::::if:::::::f           f:::::::f         e::::::::eeeeeeee   r:::::r')            
+    print('S:::::::::::::::SS n::::n    n::::ni::::::if:::::::f           f:::::::f          ee:::::::::::::e   r:::::r')            
+    print('SSSSSSSSSSSSSSS   nnnnnn    nnnnnniiiiiiiifffffffff           fffffffff            eeeeeeeeeeeeee   rrrrrrr')
 
-    print("  1. Start Capturing network packets")
+
+    print("\n\n\n        𝑫𝒆𝒔𝒊𝒈𝒏 𝒂𝒏𝒅 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒅 𝑩𝒚 𝑨𝒃𝒉𝒊𝒋𝒆𝒆𝒕 𝑺𝒊𝒏𝒈𝒉")
+
+    
+
+
+
+
+
+    print("\n\n  1. Start Capturing network packets")
     print("  2. Read a Pcap file")
     val = int(input("Enter your choice: "))
 
@@ -87,11 +113,13 @@ def main():
 
         # datetime object containing current date and time
 
-        now = datetime.now()
+        #now = datetime.now()
         count=0
 
+        rounds = int(input("\n\nEnter Number of Packets you wnat to capture: "))
+
         # dd/mm/YY H:M:S
-        dt_string = now.strftime("%d/%m/%Y_%H:%M:%S")
+        #dt_string = now.strftime("%d/%m/%Y_%H:%M:%S")
 
         pcap_file1 = Pcap("Sniffed_packet_1.pcap")
 
@@ -229,7 +257,7 @@ def main():
 
         for packet in range(size1):
 
-            pkt = f_read(packet)
+            pkt = f_read[packet]
             print(" Packet Information: \n\n")
             
             hexdump(pkt)

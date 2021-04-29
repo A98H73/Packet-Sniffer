@@ -10,3 +10,8 @@ https://www.bitforestinfo.com/blog/01/13/save-python-raw-tcpip-packet-into-pcap-
 
 https://stackoverflow.com/questions/18256342/parsing-a-pcap-file-in-python
 
+https://patorjk.com/software/taag/#p=display&f=Georgia11&t=Sniffer%20
+
+https://fsymbols.com/generators/carty/
+
+https://www.colorschemer.com/ascii-art-generator/#p=display&f=Avatar&t=Sniffer
