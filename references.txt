@@ -1,0 +1,12 @@
+https://medium.com/@vworri/extracting-the-payload-from-a-pcap-file-using-python-d938d7622d71
+
+https://subscription.packtpub.com/book/networking_and_servers/9781784399771/8/ch08lvl1sec48/reading-and-writing-to-pcap-files
+
+https://cppsecrets.com/users/812115971219710810510797110971151014957494864103109971051084699111109/Python-Scapy-Reading-PCAP-file.php
+
+https://youtu.be/WGJC5vT5YJo
+
+https://www.bitforestinfo.com/blog/01/13/save-python-raw-tcpip-packet-into-pcap-files.html
+
+https://stackoverflow.com/questions/18256342/parsing-a-pcap-file-in-python
+
