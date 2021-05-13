@@ -1,0 +1,355 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {media/} }
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\lhead{Team-5}
+\rhead{\empty}
+\rfoot{Page \thepage}
+
+
+
+
+\begin{document}
+
+\chapter{Network Sniffing Using Wireshark}
+
+\section{\emph{Introduction}}
+
+\subsection{What is Sniffing}
+
+Sniffing can be defined as a process that refers to investigating
+something covertly in order to find any confidential information. By an
+information security perspective, sniffing refers to tapping the traffic
+or routing the traffic to a target where it can be captured, analyzed
+and monitored. It is mostly performed to analyze the usage of network,
+troubleshooting any network issues, session monitoring for development
+and the testing purposes.
+
+The network packets or TCP/IP packet contains vital information which is
+required for two network interfaces to communicate with each other. It
+contains fields that are source and destination IP addresses, ports,
+sequence numbers and the protocol type. All of these fields are crucial
+for various network layers to function properly, and especially for the
+Layer 7 application which makes use of the received data.
+
+\subsection{What is Packet Sniffing}
+
+The data that has to be transmitted over the computer network, is
+firstly and foremost broken down into smaller units at the sender's node
+called \emph{data packets} and at the receiver's node it is resembled in
+original format. So we can say that it is the \emph{smallest unit} of
+communication over a computer network. These packets are also called a
+block, a segment, a cell or a datagram. Capturing these data packets
+when it is flowing from one device to another over a network is known as
+\textbf{packet sniffing}. We can assume that it is similar to
+wiretapping to a telephone network.These are mostly used by
+\emph{crackers and hackers} to collect information illegally from the
+network. \emph{ISPs, advertisers and governments also use such softwares
+to capture packets}.
+
+\subsection{What is Wireshark}
+
+Wireshark is one of the best network packet analyzer, which is an
+essential tool for security professionals and system administrators. It
+is a free and open source packet analyzer, the purpose of this packet
+analyzer is to present captured packet data in as much detail as
+possible.
+
+We can think that network packet analyzer is like a measuring device for
+examining what's happening inside a network cable,which is similar to an
+electrician that uses a voltmeter for examining what's happening inside
+an electric cable.It is a tool that intercepts traffic and converts that
+binary traffic into human-readable format, which makes it easy to
+identify what type of traffic is crossing your network, how much of it,
+how frequently it transfers, the latency there is between certain hops,
+and so forth.
+
+\subsection{\Large \emph{References: }}
+\begin{flushleft}
+\href{https://www.greycampus.com/blog/information-security/what-is-a-sniffing-attack-and-how-can-you-defend\%20it\#:~:text=From\%20an\%20information\%20security\%20perspective,for\%20development\%20and\%20testing\%20purpose.}{https://www.greycampus.com/blog/information-security/what-is-a-sniffing-attack-and-how-can-you-defend\%20it\#:~:text=From\%20an\%20information \ \%20security\%20perspective,for\%20development\%20and\%20testing \ \%20purpose.}
+\bigbreak
+\href{https://www.valencynetworks.com/articles/cyber-security-attacks-network-sniffing.html}{\emph{https://www.valencynetworks.com/articles/cyber-security-attacks-network-sniffing.html}}
+\bigbreak
+\href{https://www.geeksforgeeks.org/what-is-packet-sniffing/}{\emph{https://www.geeksforgeeks.org/what-is-packet-sniffing/}}
+\bigbreak
+\href{https://www.csoonline.com/article/3305805/what-is-wireshark-what-this-essential-troubleshooting-tool-does-and-how-to-use-it.html}{\emph{https://www.csoonline.com/article/3305805/what-is-wireshark-what-this-essential-troubleshooting-tool-does-and-how-to-use-it.html}}
+\end{flushleft}
+\chapter{\emph{Working of wireshark}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\item
+  After successful installation of wireshark, launch the application.
+  The interface of the application would be like
+  \begin{center}\includegraphics[width=5.56771in,height=3.13530in]{image6.png}\end{center}
+  
+
+
+\begin{quote}
+The picture above shows the homescreen of version 3.4.0 of the
+application.By selecting the current interface, we can get the traffic
+traversing through that interface.
+\end{quote}
+
+
+\def\labelenumi{\arabic{enumi})}
+\item
+  The list in the above figure shows the Interface list options. That is
+  the number of interfaces are present. The option that we select from
+  the list will determine all the traffic we see. For instance, suppose
+  we have selected the wi-fi option.the after this, a new window will
+  open up, which shows the traffic that is flowing through the network
+  currently. The picture below will show the live capture of packets
+  from our wireshark.
+
+
+\includegraphics[width=5.60628in,height=3.16538in]{image3.png}
+
+
+\def\labelenumi{\arabic{enumi})}
+\item
+  Now your analyzer is capturing packets that are flowing through your
+  network and to analyze any packet, click on the red button in menu
+  bar. The packet captured until yet is present in second part ``Packet
+  listing window''.It determines the packet flow or the captured packets
+  in the traffic. It includes the packet number, time, source,
+  destination, protocol, length, and info.
+
+
+\begin{quote}
+\includegraphics[width=1.30729in,height=0.89583in]{image4.png}
+
+Below picture will show the list of captured packets
+
+\includegraphics[width=5.60628in,height=3.16538in]{image1.png}
+\end{quote}
+
+
+\def\labelenumi{\arabic{enumi})}
+\item
+  There is a filter block below the menu bar, from where a large amount
+  of data can be filtered. For example, if we apply a filter for HTTP,
+  only the interfaces with the HTTP will be listed. If you want to
+  filter according to the source, right-click on the source you want to
+  filter and select 'Apply as Filter' and choose '...and filter.'
+\end{enumerate}
+
+\includegraphics[width=5.60628in,height=3.16538in]{image2.png}
+
+\chapter{\emph{Wireshark Packet Sniffing}}
+
+It is a software that is mostly used by system administrators to isolate
+and troubleshoot the problems over a network. It is also used by hackers
+to analyze the packet of victims so that they can find any vulnerability
+of the system and used it to exploit their victims. It can also be used
+to capture any username and password that is transmitting without any
+encrypted connection. The wrong way of its used is to drop user
+confidential data.
+
+Given below is the steps for packet sniffing over a network:
+
+\begin{itemize}
+\item
+  Start your Wireshark Application.
+\item
+  Select the current interface. For example, the interface can be
+  Ethernet that we would be using.
+\item
+  Now a continuous flow of traffic can be shown on our screen. To stop
+  or watch any particular packet and want to analyze any packet, we can
+  press the red button below the menu bar, it will stop capturing the
+  packet and now we can analyze all the previously captured packets.
+\end{itemize}
+
+\includegraphics[width=6.26772in,height=3.45833in]{image7.png}
+\\
+Apply the filter by the name 'tcp.' After the filter is applied, the
+screen will look as:
+\\*
+
+\includegraphics[width=6.26772in,height=3.52778in]{image8.png}
+\\*
+The above picture is showing all the traffic which follows `tcp'
+protocol.
+
+In the below picture we can see that it is capturing packets that are
+flowing through this device,and wireshark is showing whole lots of
+information about the packet.
+\\*
+\includegraphics[width=6.26772in,height=3.52778in]{image10.png}
+\\*
+This process of capturing the packet and analyzing is called as ``Packet
+Sniffing''.
+\\*
+
+
+\chapter{\emph{Implementation of tool that captures Network packets like
+Wireshark} }
+
+\subsection{Libraries required to capture the packets}
+
+There are some specific libraries that are present in python library to
+implement the process of capturing the packets that are flowing through
+the network.
+
+\begin{itemize}
+\item
+  Scapy
+\end{itemize}
+
+\begin{quote}
+It is used for large scale web scraping, Scrapy is actually a python
+framework. It provides us all the tools that we need to efficiently
+\emph{\textbf{extract}} data from websites, and then process them as we
+want, after that store them in the preferred \emph{\textbf{structure}}
+and format.
+
+As we all know the diverse nature of the internet, so there are no ``one
+size fits all'' approach in extracting data from any of the websites.
+Most of the time an ad hoc approach is taken and if we begin with
+writing a code for every little task you perform, we would eventually
+end up creating your own scraping framework. So there comes the Scrapy
+framework.
+\end{quote}
+
+\begin{itemize}
+\item
+  Libpacp
+\end{itemize}
+
+\begin{quote}
+libpcap is a lightweight Python package, based on the \emph{ctypes}
+library.
+
+It is fully compliant implementation of the original C \emph{libpcap}
+from 1.0.0 up to 1.9.0 API and the \emph{WinPcap}'s 4.1.3 libpcap
+(1.0.0rel0b) API by implementing whole its functionality in a clean
+Python instead of C.
+\end{quote}
+
+\begin{itemize}
+\item
+  Libtrace
+\end{itemize}
+
+\begin{quote}
+python-libtrace is not a complete set of all the libtrace routines,
+rather it's a somewhat simplified set, intended as an easy-to-use
+toolkit, and one that should be suitable for networking students. It use
+(more or less) the original field names within the various header
+decodes.
+\end{quote}
+
+\begin{itemize}
+\item
+  Socket Packet Capture
+\end{itemize}
+
+\begin{quote}
+A simple packet sniffer in Python can be created with the help socket
+module. We can use the raw
+
+socket type to get the packets. A raw socket provides access to the
+underlying protocols, which support
+
+socket abstractions. Since raw sockets are part of the internet socket
+API, they can only be used to
+
+generate and receive IP packets.
+
+The processing power used is comparatively lower than the existing
+packet capturing libraries
+
+\chapter{\emph{Methodology used for the preparation of Project }}
+\end{quote}
+
+\subsection{Methodology Used}
+
+The Technique and Methodologies that we consider for the development for this project that is ``Network Packet Sniffer Tool Like Wireshark'' is rational unified process and evolutionary prototyping model. \\
+
+\includegraphics[width=4.85666in,height=3.55507in]{image9.png}
+
+\emph{\large \textbf{Figure: Rational Unified process: Flow of the work\\}}
+
+The Rational Unified Process is a kind of comprehensive process
+framework that provides industry-tested practices for software and
+systems delivery and implementation and for effective project
+management. It is one of many processes contained within the Rational
+Process Library.
+
+Rational Unified Process recognizes the importance of customer
+communication and streamlined methods for describing the customer's view
+of a system. It suggests a process flow that is iterative and
+incremental, providing the evolutionary feel that is essential in modern
+software development (Pressman, 2010).
+
+
+\subsection{ Software Dependencies:}
+
+For the effective implementation/initialization of the project i.e.
+Network sniffing with wireshark similar tool requires a proper execution
+environment to be considered.
+
+Python2.7 Programming Language accompanied with important libraries such
+as STRUCT module, STRUCT module and JSON module.
+
+For the proper implementation of our project, the most important
+dependency of the project is the script has to be run with
+administrative privileges.
+
+
+\subsection{Hardware Dependencies:}
+
+
+The major hardware dependencies contingent for the initialization of the
+project are as follows:
+
+\begin{itemize}
+\item
+  The System is dependent upon Mouse application.
+\item
+  The System is dependent upon Monitor application
+\item
+  Network Interface card is must for process of packet capture.
+\item
+  3-5 MB of hard disk space.
+\item
+  1 GB of RAM (Random Access Memory)
+\end{itemize}
+\newpage
+\bigbreak
+\subsection{\emph{References:}}
+\begin{flushleft}
+\href{https://www.javatpoint.com/wireshark}{\emph{https://www.javatpoint.com/wireshark}}
+\bigbreak
+\href{https://www.wireshark.org/docs/wsdg_html_chunked/PartDevelopment.html}{\emph{https://www.wireshark.org/docs/wsdg\_html\_chunked/PartDevelopment.html}}
+\bigbreak
+\href{https://www.analyticsvidhya.com/blog/2017/07/web-scraping-in-python-using-scrapy/\#:~:text=Scrapy\%20is\%20a\%20Python\%20framework,your\%20preferred\%20structure\%20and\%20format}{\emph{https://www.analyticsvidhya.com/blog/2017/07/web-scraping-in-python-using-scrapy/\#:~:text=Scrapy\%20is\%20a\%20Python\%20framework,your \ \%20preferred\%20structure\%20and\%20format}.}
+\bigbreak
+\href{https://pypi.org/project/libpcap/\#:~:text=libpcap\%20is\%20a\%20lightweight\%20Python,API\%20and\%20the\%20WinPcap's\%204.1}{\emph{https://pypi.org/project/libpcap/\#:~:text=libpcap\%20is\%20a\%20lightweight \ \%20Python,API\%20and\%20the\%20WinPcap's\%204.1}}
+\end{flushleft}
+\newpage
+
+\begin{flushleft}
+
+\textbf{\LARGE \bf \emph{Conclusion:}}
+\end{flushleft}
+\paragraph{The most important purpose of this project is to develop a nifty tool(
+or a software) that have the ability to sniff over the network and
+capture data packets that is around it. Analyze those packets and gain
+some informative data from it to compromise the systems on its range. It
+can also be used to monitor a user's home network for activities that
+are being encapsulated in the process.There are many expensive tools out
+there for this purpose but it won't fits on an average students pocket
+money, so to help those people who really wants to know what is going on
+with their home network this project can be name ``Network Sniffing With
+Wireshark Similar Tool''. It would turn out to be a great help and
+guidance. From the current scenarios of this highly tempting and cunning
+world this tool come on the light that not just feasible for monitoring
+the network but can be used effective in the field of education as well.}
+
+\end{document}

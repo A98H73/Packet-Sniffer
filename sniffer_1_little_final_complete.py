@@ -7,6 +7,7 @@ from datetime import datetime
 from scapy.all import *
 
 
+
 TAB_1 = '\t  - '
 TAB_2 = '\t\t  - '
 TAB_3 = '\t\t\t  - '
@@ -45,24 +46,22 @@ PCAP_DATA_LINK_TYPE = 1
 
 class Pcap:
 
- def __init__(self, filename, link_type=PCAP_DATA_LINK_TYPE):
-  self.pcap_file = open(filename, 'wb') 
-  self.pcap_file.write(struct.pack('@ I H H i I I I ', PCAP_MAGICAL_NUMBER, PCAP_MJ_VERN_NUMBER, PCAP_MI_VERN_NUMBER, PCAP_LOCAL_CORECTIN, PCAP_ACCUR_TIMSTAMP, PCAP_MAX_LENGTH_CAP, link_type))
-  print ("[+] Link Type : {}".format(link_type))
+    def __init__(self, filename, link_type=PCAP_DATA_LINK_TYPE):
+        self.pcap_file = open(filename, 'wb') 
+        self.pcap_file.write(struct.pack('@ I H H i I I I ', PCAP_MAGICAL_NUMBER, PCAP_MJ_VERN_NUMBER, PCAP_MI_VERN_NUMBER, PCAP_LOCAL_CORECTIN, PCAP_ACCUR_TIMSTAMP, PCAP_MAX_LENGTH_CAP, link_type))
+        print ("[+] Link Type : {}".format(link_type))
 
- def writelist(self, data=[]):
-  for i in data:
-   self.write(i)
-  return
 
- def write(self, data):
-  ts_sec, ts_usec = map(int, str(time.time()).split('.'))
-  length = len(data)
-  self.pcap_file.write(struct.pack('@ I I I I', ts_sec, ts_usec, length, length))
-  self.pcap_file.write(data)
+    def write(self, data):
+        ts_sec, ts_usec = map(int, str(time.time()).split('.'))
+        length = len(data)
+        self.pcap_file.write(struct.pack('@ I I I I', ts_sec, ts_usec, length, length))
+        self.pcap_file.write(data)
+        
 
- def close(self):
-  self.pcap_file.close()
+
+    def close(self):
+        self.pcap_file.close()
 
 
 
@@ -87,7 +86,7 @@ def main():
     print('SSSSSSSSSSSSSSS   nnnnnn    nnnnnniiiiiiiifffffffff           fffffffff            eeeeeeeeeeeeee   rrrrrrr')
 
 
-    print("\n\n\n        𝑫𝒆𝒔𝒊𝒈𝒏 𝒂𝒏𝒅 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒅 𝑩𝒚 𝑨𝒃𝒉𝒊𝒋𝒆𝒆𝒕 𝑺𝒊𝒏𝒈𝒉")
+    print("\n\n\n        𝑫𝒆𝒔𝒊𝒈𝒏 𝒂𝒏𝒅 𝑫𝒆𝒗𝒆𝒍𝒐𝒑𝒆𝒅 𝑩𝒚 𝑨𝒃𝒉𝒊𝒋𝒆𝒆𝒕 𝑺𝒊𝒏𝒈𝒉, 𝑨𝒃𝒉𝒊𝒍𝒂𝒔𝒉𝒂 𝑺𝒉𝒂𝒓𝒎𝒂 𝒂𝒏𝒅 𝑨𝒔𝒉𝒊𝒔𝒉 𝑺𝒂𝒉𝒖")
 
     
 
@@ -105,7 +104,7 @@ def main():
         # Create socket 
         if os.name == "nt":
             conn = socket.socket(socket.AF_INET,socket.SOCK_RAW,socket.IPPROTO_IP)
-            conn.bind((raw_input("[+] YOUR_INTERFACE : "),0))
+            conn.bind((input("[+] YOUR_INTERFACE : "),0))
             conn.setsockopt(socket.IPPROTO_IP,socket.IP_HDRINCL,1)
             conn.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)
         else:
@@ -116,12 +115,12 @@ def main():
         #now = datetime.now()
         count=0
 
-        rounds = int(input("\n\nEnter Number of Packets you wnat to capture: "))
+        rounds = int(input("\n\nEnter Number of Packets you want to capture: "))
 
         # dd/mm/YY H:M:S
-       # dt_string = now.strftime("%d/%m/%Y_%H:%M:%S")
+        dt_string = time.strftime("%d-%m-%Y-%H:%M:%S")
 
-        pcap_file1 = Pcap("Sniffed_packet_1.pcap")
+        pcap_file1 = Pcap("Sniffed_packet_"+dt_string+".pcap")
 
         while True:
             
@@ -137,10 +136,7 @@ def main():
             print('\n Ehternet Frame: ')
             print(TAB_1 + 'Destination: {}, Source: {}, Protocol: {}'.format(dest_addr, src_addr, eth_proto))
 
-            # in file
-            # pcap_file.write('\n Ehternet Frame: ')
-            # pcap_file.write(TAB_1 + 'Destination: {}, Source: {}, Protocol: {}'.format(dest_addr, src_addr, eth_proto))
-
+            
             # 8 for IPv4
 
             if eth_proto ==8:
@@ -149,13 +145,7 @@ def main():
                 print(TAB_2 + 'Version: {}, header_length: {}, TTL(Time to Live): {}'.format(version, header_length, ttl))
                 print(TAB_2 + 'Protocol: {}, Source: {}, Target: {}'.format(proto, src, target))
 
-                # In file
-
-                # pcap_file.write(TAB_1 + 'IPv4_PAcket: ')
-                # pcap_file.write(TAB_2 + 'Version: {}, header_length: {}, TTL(Time to Live): {}'.format(version, header_length, ttl))
-                # pcap_file.write(TAB_2 + 'Protocol: {}, Source: {}, Target: {}'.format(proto, src, target))
-                
-                
+               
 
                 # 1 for ICMP
 
@@ -166,13 +156,7 @@ def main():
                     print(TAB_2 + 'Data: {}')
                     print(format_multi_line(DATA_TAB_3, data))
 
-                    #In file
-
-                    # pcap_file.write (TAB_1 + 'ICMP_PAcket: ')
-                    # pcap_file (TAB_2 + 'Type: {}, Code: {}, Checksum: {}'.format(icmp_type, code, checksum))
-                    # pcap_file.write(TAB_2 + 'Data: {}')
-                    # pcap_file.write(format_multi_line(DATA_TAB_3, data))
-
+                   
                 
                 # 6 for TCP
 
@@ -186,16 +170,7 @@ def main():
                     print(TAB_2 + 'Data: {}')
                     print(format_multi_line(DATA_TAB_3, data))
 
-                    # IN File
-
-                    # pcap_file.write(TAB_1 + 'TCP Segment: ')
-                    # pcap_file.write(TAB_2 + 'Source port: {}, Destination port: {}'.format(src_port, dest_port))
-                    # pcap_file.write(TAB_2 + 'Sequence: {}, Acknowledgement: {}'.format(sequence, acknowledgement))
-                    # pcap_file.write(TAB_2 + 'Flags')
-                    # pcap_file.write(TAB_3 + 'URG: {}, ACK: {}, PSH: {}, RST: {}, SYN: {}, FIN: {}'.format(flag_urg, flag_ack, flag_psh, flag_rst, flag_syn, flag_fin))
-                    # pcap_file.write(TAB_2 + 'Data: {}')
-                    # pcap_file.write(format_multi_line(DATA_TAB_3, data))
-
+                   
 
                 # 17 for UDP     
 
@@ -206,34 +181,17 @@ def main():
                     print(TAB_2 + 'Data: {}')
                     print(format_multi_line(DATA_TAB_3, data))
 
-                    # In File
-
-                    # pcap_file.write(TAB_1 + 'UDP Segment: ')
-                    # pcap_file.write(TAB_2 + 'Source port: {}, Destination port: {}, Length: {}'.format(src_port, dest_port, size))
-                    # pcap_file.write(TAB_2 + 'Data: {}')
-                    # pcap_file.write(format_multi_line(DATA_TAB_3, data))
-
+                   
                 # Other     
 
                 else:
                     print(TAB_1 + 'Data: {}')
                     print(format_multi_line(DATA_TAB_2, data))
 
-                    # In file    
-
-                    # pcap_file.write(TAB_1 + 'Data: {}')
-                    # pcap_file.write(format_multi_line(DATA_TAB_2, data))
-
-
+                   
             else:
                 print('Data: {}')
                 print(format_multi_line(DATA_TAB_1, data))
-
-
-                # In File    
-
-                # pcap_file.write('Data: {}')
-                # pcap_file.write(format_multi_line(DATA_TAB_1, data))
 
 
 
@@ -241,7 +199,7 @@ def main():
 
             pcap_file1.pcap_file.flush()
 
-            if count>=100:
+            if count>=rounds:
                 break
 
         # Closing the file

@@ -83,7 +83,7 @@ def main():
     count=0
 
     # dd/mm/YY H:M:S
-    dt_string = now.strftime("%d/%m/%Y_%H:%M:%S")
+    dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
 
     pcap_file1 = Pcap("Sniffed_packet_1.pcap")
 
